@@ -1,0 +1,33 @@
+<h1>Todo List</h1>
+
+
+<ul>
+	{% for todo_item in all_items %}
+	<li>{{ todo_item.content }}
+<form action="/deleteTodo/{{todo_item.id}}/" 
+	  style="display: inline;" 
+	  method="post">{% csrf_token %}
+	<input type="submit" value="Delete"/>
+</form>
+
+<!-- <form action= "/updateTodo/{{todo_item.id}}" method="POST"> {% csrf_token %}
+    <input action= "/updateTodo/" type="search" placeholder="{{ todos.item }}" value="{{ todo.item }}"
+        aria-label="Search" name="item">
+    <input type="hidden" value="{{ todo.completed }}" name="completed">
+    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Update</button>
+</form> -->
+
+<!-- <form action="/updateTodo/{{todo_item.id}}/"
+	   style= "display: inline;"
+	   method="post">{% csrf_token %}
+	   <input type="submit" value="Edit"/>
+	</form> -->
+	</li>
+	{% endfor %}
+</ul>
+
+<form action="/addTodo/" method="post">{% csrf_token %}
+	<input type="text" name="content"/>
+	<input type="submit" value="Add"/>
+</form>
+
